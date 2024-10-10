@@ -29,10 +29,10 @@ exports.forgotPassword = async (req, res) => {
 };
 exports.resetPassword = async (req, res) => {
   try {
-    const token = req.query.token; // Token vindo da query string
-    const newPassword = req.body.password; // Nome correto da chave para a nova senha
+    const token = req.query.token; 
+    const newPassword = req.body.password; 
 
-    // Chama o serviço de redefinição de senha
+    
     await authService.resetPassword(token, newPassword);
 
     res.status(200).json({ message: 'Password updated successfully' });
@@ -43,7 +43,7 @@ exports.resetPassword = async (req, res) => {
 
 exports.getProfile = async (req, res) => {
   try {
-    const userId = req.user.id; // ID do usuário autenticado
+    const userId = req.user.id; 
     const profile = await authService.getUserProfile(userId);
     res.json(profile);
   } catch (error) {
@@ -53,9 +53,9 @@ exports.getProfile = async (req, res) => {
 
 exports.updateProfile = async (req, res) => {
   try {
-    const userId = req.user.id; // ID do usuário autenticado
-    const updatedUser = await authService.updateUserProfile(userId, req.body); // Chama o serviço para atualizar o perfil
-    res.status(200).json(updatedUser); // Retorna o usuário atualizado
+    const userId = req.user.id; 
+    const updatedUser = await authService.updateUserProfile(userId, req.body); 
+    res.status(200).json(updatedUser); 
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
