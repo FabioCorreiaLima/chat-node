@@ -1,6 +1,6 @@
 const token = localStorage.getItem('token');
 
-// Verificar se o token existe; se não, redirecionar para a página de login
+
 if (!token) {
     window.location.href = '/index.html';
 }
@@ -53,7 +53,6 @@ document.getElementById('leaveRoom').addEventListener('click', async () => {
                 'Authorization': `Bearer ${token}`
             }
         });
-        console.log(response)
         if (response.ok) {
             socket.emit('leaveRoom', { roomId, userName: username }); 
             window.location.href = '/dashboard.html';
