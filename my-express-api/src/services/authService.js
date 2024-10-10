@@ -70,9 +70,9 @@ class AuthService {
       user.password = hashedPassword;
     }
   
-    await userRepository.updateUser(user.id, user); // Atualiza o usuário no banco de dados
+    await userRepository.updateUser(user.id, user); 
   
-    return user; // Retorna o usuário atualizado
+    return user; 
   }
   
 }
