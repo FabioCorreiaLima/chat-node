@@ -4,7 +4,7 @@ const { findUserById } = require('../repositories/userRepository');
 // Criar uma nova sala
 exports.createRoom = async (req, res) => {
     const { name, description, capacity } = req.body;
-    const userId = req.user.id; // ID do usuário autenticado
+    const userId = req.user.id;
 
     try {
         const roomData = {
@@ -12,8 +12,8 @@ exports.createRoom = async (req, res) => {
             description,
             capacity,
             isActive: true,
-            createdBy: userId, // ID do criador da sala
-            participants: [] // Inicialmente, não há participantes
+            createdBy: userId, 
+            participants: [] 
         };
 
         const room = await roomRepository.createRoom(roomData);
@@ -36,8 +36,7 @@ exports.getAllRooms = async (req, res) => {
 // Participar de uma sala
 exports.joinRoom = async (req, res) => {
     const { roomId } = req.params;
-    const userId = req.user.id; // ID do usuário autenticado
-    console.log('Socket.io está definido em req.io:', !!req.io);
+    const userId = req.user.id; 
     try {
         const room = await roomRepository.findRoomById(roomId);
         console.log('Sala encontrada:', room);
@@ -49,7 +48,7 @@ exports.joinRoom = async (req, res) => {
         await roomRepository.addParticipant(room, userId);
         console.log(`Usuário ${userId} adicionado à sala ${roomId}`);
 
-        // Emitir evento para o Socket.io
+        
         if (req.io) {
             req.io.to(roomId).emit('message', { username: 'Sistema', message: `Usuário ${userId} entrou na sala!` });
         } else {
@@ -58,14 +57,14 @@ exports.joinRoom = async (req, res) => {
 
         return res.status(200).json({ message: 'Você entrou na sala com sucesso!', room });
     } catch (error) {
-        console.error('Erro ao participar da sala:', error.message || error); // Log detalhado
+    
         return res.status(500).json({ message: 'Erro ao participar da sala.', error: error.message || 'Erro desconhecido' });
     }
 };
 
 exports.leaveRoom = async (req, res) => {
     const { roomId } = req.params;
-    const userId = req.user.id; // ID do usuário autenticado
+    const userId = req.user.id;
 
     try {
         console.log(`Tentando sair da sala: ${roomId} para o usuário: ${userId}`);
