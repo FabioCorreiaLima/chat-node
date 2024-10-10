@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
-const { v4: uuidv4 } = require('uuid'); // Importar o uuid
+const { v4: uuidv4 } = require('uuid'); 
 
 const roomSchema = new mongoose.Schema({
     _id: {
         type: String,
-        default: uuidv4, // Gerar UUID automaticamente
+        default: uuidv4, 
     },
     name: {
         type: String,
@@ -22,13 +22,13 @@ const roomSchema = new mongoose.Schema({
         type: Boolean,
         default: true
     },
-    createdBy: { // ID do usuário que criou a sala
+    createdBy: { 
         type: String,
         required: true
     },
-    participants: { // Lista de participantes da sala (array de IDs de usuários)
+    participants: { 
         type: [String],
-        default: [] // Inicialmente, a sala não terá participantes, exceto o criador
+        default: [] 
     },
     createdAt: {
         type: Date,
