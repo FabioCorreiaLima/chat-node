@@ -1,13 +1,13 @@
-// models/User.js
+
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
 const { v4: uuidv4 } = require('uuid');
 
-// Definição do modelo User
+
 const User = sequelize.define('User', {
   id: {
-    type: DataTypes.UUID, // Altera o tipo para UUID
-    defaultValue: DataTypes.UUIDV4, // Gera um UUID automaticamente
+    type: DataTypes.UUID, 
+    defaultValue: DataTypes.UUIDV4, 
     primaryKey: true,
     allowNull: false,
   },
@@ -20,7 +20,7 @@ const User = sequelize.define('User', {
     allowNull: false,
     unique: true,
     validate: {
-      isEmail: true,  // Validação para garantir que o email seja válido
+      isEmail: true,  
     },
   },
   password: {
@@ -28,7 +28,7 @@ const User = sequelize.define('User', {
     allowNull: false,
   }
 }, {
-  timestamps: true, // Adiciona createdAt e updatedAt automaticamente
+  timestamps: true, 
 });
 
 module.exports = User;
