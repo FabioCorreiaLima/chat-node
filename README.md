@@ -37,7 +37,7 @@ Este projeto implementa um sistema de chat em tempo real usando **Socket.io**, o
 1. Clone este repositório:
 
    ```bash
-   git clone https://github.com/SeuUsuario/chat-real-time.git
+   git clone https://github.com/FabioCorreiaLima/chat-node.git
 2. Navegue até o diretório do projeto:
   
     ```bash
