@@ -1,14 +1,14 @@
 const http = require('http');
-const app = require('./app'); // Express app
-const initializeSocket = require('./services/socketService'); // Importando o socketService
+const app = require('./app'); 
+const initializeSocket = require('./services/socketService'); 
 
-// Criar o servidor HTTP
+
 const server = http.createServer(app);
 
 const io = initializeSocket(server);
-// Middleware para passar o io para as requisições
+
 app.use((req, res, next) => {
-    req.io = io; // Adiciona o io ao objeto de requisição
+    req.io = io; 
     next();
 });
 
