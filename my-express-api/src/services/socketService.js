@@ -4,7 +4,7 @@ const roomRepository = require('../repositories/roomRepository');
 const initializeSocket = (server) => {
     const io = socketIO(server, {
         cors: {
-            origin: "https://4ab3-45-169-174-145.ngrok-free.app", // Altere para o URL do ngrok
+            origin: "https://4ab3-45-169-174-145.ngrok-free.app", 
             methods: ["GET", "POST"],
         },
     });
@@ -37,7 +37,7 @@ const initializeSocket = (server) => {
                 
                 // Remover o usuário da sala
                 socket.leave(currentRoomId);
-                currentRoomId = null; // Limpar a variável após sair
+                currentRoomId = null;
             }
         });
 
@@ -45,7 +45,7 @@ const initializeSocket = (server) => {
         socket.on('disconnect', async () => {
             console.log('Usuário desconectado:', username);
             if (currentRoomId) {
-                // Emitir mensagem de saída se o usuário desconectar
+                
                 io.to(currentRoomId).emit('receiveMessage', {
                     name: 'Sistema',
                     message: `${username} desconectou.`,
