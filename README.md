@@ -56,7 +56,7 @@ Este projeto implementa um sistema de chat em tempo real usando **Socket.io**, o
 - MYSQL_USER=root
 - MYSQL_PASSWORD=sua_senha
 - MYSQL_DATABASE=nome_do_banco_de_dados
-- MONGODB_URI=mongodb://localhost:27017/nome_do_banco
+- MONGODB_URI=mongodb
 - JWT_SECRET=sua_chave_secreta
   
 ## Execute as migrações do banco de dados MySQL com o Sequelize:
